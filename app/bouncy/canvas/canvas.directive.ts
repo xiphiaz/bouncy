@@ -1,4 +1,10 @@
 import {Directive, ElementRef} from 'angular2/core';
+
+export interface ICoordinate {
+    x: number;
+    y: number;
+}
+
 @Directive({
     selector: '[bouncyCanvas]'
 })
@@ -34,7 +40,7 @@ export class BouncyCanvasDirective {
 
     }
 
-    private getMousePosition(evt:MouseEvent) {
+    private getMousePosition(evt:MouseEvent):ICoordinate {
         var rect = this.canvas.getBoundingClientRect();
         return {
             x: evt.clientX - rect.left,

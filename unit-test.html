@@ -1,0 +1,34 @@
+<html>
+<head>
+    <title>1st Jasmine Tests</title>
+    <link rel="stylesheet" href="node_modules/jasmine-core/lib/jasmine-core/jasmine.css">
+    <script src="node_modules/jasmine-core/lib/jasmine-core/jasmine.js"></script>
+    <script src="node_modules/jasmine-core/lib/jasmine-core/jasmine-html.js"></script>
+    <script src="node_modules/jasmine-core/lib/jasmine-core/boot.js"></script>
+</head>
+<body>
+<!-- #1. add the system.js library -->
+<script src="node_modules/systemjs/dist/system.src.js"></script>
+<script>
+    // #2. Configure SystemJS to use the .js extension
+    //     for imports from the app folder
+    System.config({
+        packages: {
+            'dist': {
+                defaultExtension: 'js'
+            }
+        }
+    });
+
+    // #3. Import the spec files explicitly
+    Promise.all([
+        System.import('dist/app/bouncy/canvas/canvas.spec'),
+    ])
+//    .then(window.onload)
+    .catch(console.error.bind(console));
+</script>
+
+<a href="/">Back to main</a>
+
+</body>
+</html>
