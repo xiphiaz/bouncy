@@ -23,6 +23,9 @@
             'dist': {
                 defaultExtension: 'js'
             }
+        },
+        map: {
+            lodash: 'node_modules/lodash/lodash.js'
         }
     });
 
@@ -30,7 +33,7 @@
     Promise.all([
         System.import('dist/app/bouncy/canvas/canvas.spec'),
     ])
-//    .then(window.onload)
+    .then(window.onload)
     .catch(console.error.bind(console));
 </script>
 

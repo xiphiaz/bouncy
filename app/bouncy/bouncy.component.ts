@@ -5,11 +5,4 @@ import {BouncyCanvasDirective} from "./canvas/canvas.directive";
     templateUrl: `/app/bouncy/bouncy.tpl.html`,
     directives: [BouncyCanvasDirective]
 })
-export class BouncyComponent {
-
-    constructor(element:ElementRef) {
-
-        console.log(element.nativeElement);
-    }
-
-}
+export class BouncyComponent {}
