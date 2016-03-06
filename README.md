@@ -8,7 +8,7 @@ clicks on the canvas
 ```
 npm install
 ```
-1. Run localhost browsersync server
+2. Run localhost browsersync server
 ```
 npm run start
 ```
