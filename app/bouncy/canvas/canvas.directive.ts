@@ -1,47 +1,41 @@
 import {Directive, ElementRef} from 'angular2/core';
 import * as _ from 'lodash';
-
-export interface ICoordinate {
-    x: number;
-    y: number;
-}
+import {Ball, ICoordinates} from "./ball/ball";
+import {BallCollection} from "./ball/ballCollection";
 
 @Directive({
     selector: '[bouncyCanvas]'
 })
+
 export class BouncyCanvasDirective {
 
     private canvas:HTMLCanvasElement;
     private context:CanvasRenderingContext2D;
+
+    private ballCollection:BallCollection;
 
     constructor(el: ElementRef) {
 
         this.canvas = el.nativeElement;
         this.canvas.style.backgroundColor = 'red';
 
+        this.ballCollection = new BallCollection();
+
         this.canvas.addEventListener('click', (evt:MouseEvent)  => {
             let mousePosition = this.getMousePosition(evt);
-            var message = 'Mouse position: ' + mousePosition.x + ',' + mousePosition.y;
-            console.log(message);
+
+            let ball = new Ball(mousePosition);
+            this.ballCollection.push(ball);
+
         }, false);
 
         this.context = this.canvas.getContext("2d");
 
-        var centerX = this.canvas.width / 2;
-        var centerY = this.canvas.height / 2;
-        var radius = 70;
-
-        this.context.beginPath();
-        this.context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
-        this.context.fillStyle = 'green';
-        this.context.fill();
-        this.context.lineWidth = 5;
-        this.context.strokeStyle = '#003300';
-        this.context.stroke();
+        this.render();
 
     }
 
-    private getMousePosition(evt:MouseEvent):ICoordinate {
+    private getMousePosition(evt:MouseEvent):ICoordinates {
         var rect = this.canvas.getBoundingClientRect();
         return {
             x: evt.clientX - rect.left,
@@ -49,6 +43,13 @@ export class BouncyCanvasDirective {
         };
     }
 
+    private render(timestamp?:number):void {
 
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+        this.ballCollection.redraw(this.context, timestamp);
+
+        window.requestAnimationFrame(this.render.bind(this));
+    }
 
 }
