@@ -4,7 +4,11 @@ clicks on the canvas
 
 ## Installation Instructions
 
-1. Run
+1. Install dependencies
 ```
-npm install && npm run start
+npm install
+```
+1. Run localhost browsersync server
+```
+npm run start
 ```
