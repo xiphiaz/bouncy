@@ -32,6 +32,8 @@
     // #3. Import the spec files explicitly
     Promise.all([
         System.import('dist/app/bouncy/canvas/canvas.spec'),
+        System.import('dist/app/bouncy/canvas/ball/ball.spec'),
+        System.import('dist/app/bouncy/canvas/ball/ballCollection.spec'),
     ])
     .then(window.onload)
     .catch(console.error.bind(console));

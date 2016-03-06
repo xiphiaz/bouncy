@@ -51,7 +51,7 @@ export class Ball {
     private radius:number = 20;
     private fillStyle:string = '#FFc200';
 
-    constructor(coordinates:ICoordinates, speed:number = Ball.randomSpeed(), direction:number = Ball.randomDirection()) {
+    constructor(coordinates:ICoordinates = {x:0, y:0}, speed:number = Ball.randomSpeed(), direction:number = Ball.randomDirection()) {
         this.vector = new Vector(coordinates, speed, direction);
     }
 

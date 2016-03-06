@@ -1,8 +1,6 @@
 import {Ball} from "./ball";
 import * as _ from 'lodash';
 
-
-
 export class BallCollection extends Array {
 
     private lastTimestamp:number = 0;
