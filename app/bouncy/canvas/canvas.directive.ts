@@ -1,4 +1,5 @@
 import {Directive, ElementRef} from 'angular2/core';
+import * as _ from 'lodash';
 
 export interface ICoordinate {
     x: number;

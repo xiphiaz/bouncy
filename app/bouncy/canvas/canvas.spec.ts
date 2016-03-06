@@ -1,11 +1,23 @@
-
 import {BouncyCanvasDirective} from "./canvas.directive";
+import {ElementRef} from "angular2/core";
 
 describe('Canvas directive', () => {
 
-    it('should run a unit test', () => {
+    let elementRefMock:ElementRef = {
+        nativeElement: document.createElement('canvas'),
+    };
 
-        expect(true).not.toBe(false);
+    describe('Initialization', () => {
+
+        it('should be initialized with a canvas and context', () => {
+
+            let directiveController:BouncyCanvasDirective = new BouncyCanvasDirective(elementRefMock);
+
+            expect((<any>directiveController).canvas).not.toBe(undefined);
+            expect((<any>directiveController).context).not.toBe(undefined);
+
+        });
+
     });
 
 });
